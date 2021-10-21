@@ -1,0 +1,2 @@
+
+<web-view src="{{source}}"></web-view>

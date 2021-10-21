@@ -1,0 +1,207 @@
+/* pages/date/date.wxss */
+page{
+  background:#f4f4f4;
+}
+
+/* 个人中心样式 */
+page{
+  background:#f4f4f4;
+}
+.home-wrap{
+  width:95%;
+  margin:auto;
+  font-size:14px;
+}
+.home-info{
+  width:100%;
+  height:192rpx;
+  background:#fff;
+  margin-top:30rpx;
+}
+.mr30{
+  margin-top:30rpx;
+}
+.home-li{
+  width:100%;
+  color:#979797;
+}
+.home-li .line:nth-child(2){
+  border-top:1px solid #f4f4f4;
+   border-bottom:1px solid #f4f4f4;
+}
+.home-li .line:nth-child(3) {
+  border-bottom:1px solid #f4f4f4;
+}
+.home-li .line:nth-child(4) {
+  border-bottom:1px solid #f4f4f4;
+}
+.handle{
+  border-top:1px solid #f4f4f4;
+  display:flex;
+  justify-content:flex-end;
+  padding-right:30rpx;
+  padding-left:30rpx;
+  align-items:center;
+  background:#fff;
+  color:#979797;
+  height:98rpx;
+}
+.done{
+  background:#f3519e;
+  color:#fff;
+  margin-left:20rpx;
+}
+.appeal{
+  border:1px solid #f3519e;
+  color:#f3519e;
+}
+.handle-btn{
+  width:200rpx;
+  height:72rpx;
+  line-height:72rpx;
+  text-align:center;
+  border-radius:36rpx;
+}
+.home-help{
+  width:100%;
+  background:#fff;
+  margin-top:30rpx;
+  box-shadow: 0 4px 12px 0 rgba(162,162,162,0.60);
+}
+.woman{
+    background: url(https://img2.inke.cn/MTUxMDI5ODkxNDgwNyM2NjYjanBn.jpg) no-repeat 4px center;
+    background-color: #F7529E;
+    background-size: 10px;
+}
+.man {
+    background: url(http://img2.inke.cn/MTUxNjkzNDk4MTU0MCMyODUjanBn.jpg) no-repeat 4px center;
+    background-color: #07aefc;
+    background-size: 10px;
+}
+.age{
+  display:inline-block;
+  width:76rpx;
+  margin:0 0 0 20rpx;
+  color:#fff;
+  font-weight:normal;
+  border-radius:4rpx;
+  text-align:center;
+  text-indent:20rpx;
+  line-height:32rpx;
+  font-size:12px;
+}
+.line{
+  display:flex;
+  justify-content: space-between;
+  padding-right:30rpx;
+  padding-left:30rpx;
+  align-items:center;
+  background:#fff; 
+  color:#979797;
+  height:98rpx;
+}
+.help-icon{
+  width:48rpx;
+  height:48rpx;
+  vertical-align: middle;
+  position:relative;
+  top:-4rpx;
+  margin-right:10rpx;
+
+}
+.link{
+    height: 98rpx;
+    padding-right: 15rpx;
+    color: #FF506D;
+    font-style: normal;
+    background: url(https://img2.inke.cn/MTUwMTIzNDc2NTcxOCM0MDMjanBn.jpg) no-repeat right center;
+    background-size: 22rpx auto;
+}
+.title-wrap{
+  position:relative;
+  top:30rpx;
+  margin-bottom:20rpx;
+}
+.cash{
+  width:100%;
+  background:#fff;
+  margin-top:30rpx;
+}
+.my-cash{
+  height:98rpx;
+  padding-left:30rpx;
+  padding-right:30rpx;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #f4f4f4;
+  font-size:14px;
+  color:#999;
+}
+.get-cash{
+  margin-left:10rpx;
+  color:#f3519e;
+}
+.come{
+  height:170rpx;
+  display:flex;
+}
+.come .all-come{
+  width:49%;
+  text-align:center;
+  padding-top:34rpx;
+  color:#999;
+}
+.money{
+  font-size:20px;
+  color:#f3519e;
+}
+.single,.sign{
+  border-right:2px solid #f4f4f4;
+}
+.copy{
+  width:128rpx;
+  height:48rpx;
+  color:#fff;
+  background:#f3519e;
+  text-align:center;
+  line-height:48rpx;
+  border-radius:48rpx;
+}
+.flow{
+  display:flex;
+  justify-content: space-around;
+  margin-bottom:15rpx;
+}
+.service-flow{
+  background:#fff;
+}
+.circle{
+  height:155rpx;
+  width:155rpx;
+  border-radius:100%;
+  text-align:center;
+  line-height:155rpx;
+  color:#fff;
+  background:#f3519e;
+}
+.word{
+  padding:30rpx;
+  color:#999;
+}
+.word view:nth-child(2){
+  margin:10rpx 0;
+}
+.copy-qq{
+  width:160rpx;
+  height:48rpx;
+  text-align:center;
+  line-height:48rpx;
+  color:#fff;
+  background:#f3519e;
+  position:relative;
+  top:-40rpx;
+  right:-70%;
+  border-radius:12px;
+
+}

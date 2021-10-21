@@ -1,0 +1,66 @@
+<view class='chating-wrapper' catchtap='chatingWrapperClick'>
+<!-- 历史消息 -->
+  <view class='chating-history' catchtap='lookHistoryMessage'>
+    <text class='chating-history-left'>历史消息</text>
+    <text class='chating-history-right'>></text>
+  </view>
+  <!-- 消息记录 -->
+   <view class='record-wrapper' id="recordWrapper"> 
+    <view wx:for="{{messageArr}}" wx:for-item="message" wx:key="{{message.time}}">
+      <view class='record-item-time-wrapper' wx:if="{{message.displayTimeHeader != ''}}">
+        <text class='record-item-time'>{{message.displayTimeHeader}}</text>
+      </view> 
+      <!-- 发送者信息在右边 -->
+      <view wx:if="{{message.sendOrReceive == 'send'}}" class='{{message.sendOrReceive == "send" ? "record-chatting-item self" : ""}}' style='justify-content: {{message.type === "tip" ? "center" : "flex-end"}}' data-message="{{message}}" bindlongpress='showEditorMenu'>
+          <!-- 发送的内容部分 -->
+        <rich-text nodes="{{message.nodes}}" wx:if="{{message.type === 'text' || message.type === 'image'}}" class='record-chatting-item-text'>{{message.text}}</rich-text>
+        <text wx:if="{{message.type !== 'tip'}}" class='right-triangle'></text>
+        <image wx:if="{{message.type !== 'tip'}}" src='{{loginAccountLogo}}' catchtap='switchToMyTab' class='record-chatting-item-img'></image>
+      </view>
+      <!-- 接收者 -->
+      <view wx:if="{{message.sendOrReceive == 'receive'}}" class='{{message.sendOrReceive == "receive" ? "record-chatting-item other" : ""}}' style='justify-content: {{message.type === "tip" ? "center" : "flex-start"}}' data-message="{{message}}"  bindlongpress='showEditorMenu'>
+        <image wx:if="{{message.type !== 'tip'}}" catchtap='switchPersonCard' src='{{chatToLogo}}' class='record-chatting-item-img'></image>
+        <text wx:if="{{message.type !== 'tip'}}" class='left-triangle'></text>
+        <rich-text nodes="{{message.nodes}}" wx:if="{{message.type === 'text'&&message.msg_type!=2 || message.type === 'image'}}" class='record-chatting-item-text' style='color:#000;background-color:#fff;'>{{message.text}}</rich-text>
+        <view wx:if="{{message.type === 'text'&& message.msg_type==2}}">
+          <view class="card-wrap">
+              <view class="top-wrap">
+                <view class="blue">
+                <image src='{{message.text.img}}'></image>
+                </view>
+              <view class="green">
+                <view>{{message.text.msg}}</view>
+                <view>{{message.text.title}}</view>
+                <view wx:if="{{message.text.desc!=''}}">{{message.text.desc}}</view>
+              </view>
+              </view>
+              <view class="gift">{{message.text.sub_title}}</view>
+              
+            </view>
+        </view>
+        <!-- <rich-text nodes="{{message.nodes}}" wx:if="{{message.type === 'tip'}}" class='tip-rich-text'>{{message.text}}</rich-text> -->
+      </view>
+    </view>
+   </view>
+  <!--底部输入框  -->
+  <view class='chatinput-wrapper' style='margin-bottom: {{focusFlag ? 20 : 0}}rpx;' catchtap='stopEventPropagation'>
+    <view class='chatinput-content'>
+      <image src='{{sendType == 0 ? "../../images/voice.png" : "../../images/keyboard.png"}}' class='chatinput-img' catchtap='switchSendType'></image>
+      <input style='margin-bottom: 20rpx;' wx:if="{{sendType == 0}}" value='{{inputValue}}' focus='{{focusFlag}}' bindinput='inputChange' bindfocus='inputFocus' bindblur='inputBlur' bindconfirm='inputSend' class='chatinput-input'  placeholder="输入文字" confirm-type='send'></input>
+      <button wx:if="{{sendType == 1}}" class="{{ isLongPress ? 'chatinput-voice-mask chatinput-voice-mask-hover' : 'chatinput-voice-mask' }}" hover-class="none" catchtouchstart='longPressStart' catchtouchend='longPressEnd'>按住说话</button>
+      <image src='../../images/more.png' catchtap='toggleMore' class='chatinput-img fr'></image>
+    </view>
+    <view wx:if="{{moreFlag}}" class='more-subcontent'>
+      <view style='display:flex;justify-content: space-around;'>
+        <view class='more-subcontent-item' catchtap='chooseImageToSend'>
+          <image src="{{iconBase64Map.iconAlbum}}" class='image'></image>
+          <text class='text'>相册</text>
+        </view>
+        <view class='more-subcontent-item' catchtap='chooseImageOrVideo'>
+          <image src="{{iconBase64Map.iconCapture}}" class='image'></image>
+          <text class='text'>拍摄</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

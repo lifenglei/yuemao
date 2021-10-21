@@ -1,0 +1,32 @@
+/* pages/editor/info.wxss */
+page{
+  background:#f4f4f4;
+  padding-top:60rpx;
+  padding-left:30rpx;
+}
+.write-info{
+  width:92%;
+  border-left:1px solid #e5e5e5;
+  border-right:1px solid #e5e5e5;
+
+}
+.phcolor{
+  color: #999; 
+  font-size:14px;
+}
+.btn button{
+  width:92%;
+  height:80rpx;
+  text-align:center;
+  line-height:80rpx;
+  font-size:14px;
+  background:#f3519e;
+  color:#fff;
+  display:inline-block;
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  margin:auto;
+}

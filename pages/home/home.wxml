@@ -1,0 +1,104 @@
+<import src="../../template/template.wxml"/>
+<template is="tabBar" data="{{tabBar:bindData.tabBar,unread:unread}}"/>
+<view class="home-wrap">
+  <view class="home-info"bindtap="goEditor" >
+     <view class="weui-panel__bd">
+                <view 
+                  url="" 
+                  class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+                    <view 
+                      class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                        <image class="weui-media-box__thumb" 
+                        src="{{avatar}}" 
+                        style="border-radius:100rpx;"
+                        />
+                    </view>
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                        <view class="weui-media-box__title" class="title-wrap">
+                          <text>{{nick}} </text>
+                          <text
+                          class="{{gender==2?'woman':gender==3?'hidden':'man'}} age">{{age}}                             </text>
+                        </view>
+                        <view style="display:flex;justify-content:space-around;align-items:center;">
+                          <view class="weui-media-box__desc"style="position:relative;left:-44rpx;">月猫号 {{uid}}</view>
+                          <text style="color:#999">查看编辑主页</text>
+                          <text class="link"></text>
+                        </view>
+                        
+                    </view>
+                </view>
+            </view>
+  </view>
+  <view class="cash" wx:if="{{is_ka==1}}">
+    <view class="my-cash">
+      <text>我的收入</text>
+      <text bindtap='getMoneyOut'>可提现金额<text style="margin:0 10rpx;">{{user_account.balance*100/10000}}元</text>  |<text class="get-cash">提现</text></text>
+    </view>
+    <view class="come">
+      <view class="all-come">
+         <view class="money single">{{user_account.total_money*100/10000}}</view>
+         <view class="sign">累计收入 (元)</view>
+      </view>
+       <view class="all-come">
+         <view class="money">{{user_account.total_orders}}</view>
+         <view>累计订单 (单)</view>
+      </view>
+    </view>
+  </view>
+   <view class="home-li mr30">
+      <navigator 
+      class="line" 
+      wx:if="{{is_ka==1}}"
+      url="../orderdetail/orderdetail?user_type=1">
+        <view>
+          <image 
+          src="http://img2.inke.cn/MTUyMTE3NjA1NjAwMSM0MDIjanBn.jpg"
+          class="help-icon"></image>
+          <text>接单记录</text>
+        </view>
+        <text class="link"></text>
+      </navigator>
+      <navigator class="line" url="../orderdetail/orderdetail?user_type=0" >
+        <view>
+          <image 
+          src="http://img2.inke.cn/MTUyMjMyNjUwNzk2NCM1MTAjanBn.jpg"
+          class="help-icon"></image>
+          <text>下单记录</text>
+        </view>
+        <text class="link"></text>
+      </navigator>   
+      <view class="line" bindtap="downApp">
+        <view>
+          <image 
+          src="http://img2.inke.cn/MTUyMjMyNjU1MzkzOCM3NSNqcGc=.jpg"
+          class="help-icon"></image>
+          <text>成为大神</text>
+        </view>
+        <text class="link"></text>
+      </view>
+      <view class="line" bindtap="goToChatroom" style="margin-top:5px;">
+        <view>
+          <image 
+          src="http://img2.inke.cn/MTUyMjMyNjU1MzkzOCM3NSNqcGc=.jpg"
+          class="help-icon"></image>
+          <text>我的聊天室</text>
+        </view>
+        <text class="link"></text>
+      </view>
+    </view>
+    <view class="home-help">
+      <navigator class="line" url="../help/help">
+        <view>
+          <image 
+          src="http://img2.inke.cn/MTUyMjMyNjU3MzIzOSM0NDgjanBn.jpg"
+          class="help-icon"></image>
+          <text>帮助与反馈</text>
+        </view>
+        <text class="link"></text>
+      </navigator>
+      
+    </view>
+
+    <view class="version">版本号：{{version}}</view>
+            
+</view>

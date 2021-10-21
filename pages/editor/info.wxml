@@ -1,0 +1,17 @@
+        <view class="weui-cells weui-cells_after-title write-info" wx:if="{{changeType==2}}">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请填写您的qq号" placeholder-class="phcolor" bindinput ="qqInput" value="{{qq}}"/>
+                </view>
+            </view>
+        </view>
+        <view class="weui-cells weui-cells_after-title write-info" wx:if="{{changeType==1}}">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请填写你的昵称" placeholder-class="phcolor" bindinput ="qqInput" value="{{nick}}" />
+                </view>
+            </view>
+        </view>
+        <view class="btn">
+          <button bindtap='changeInfo'disabled="{{status}}">提交</button>
+        </view>

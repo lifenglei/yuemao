@@ -1,0 +1,20 @@
+<view class="custom-navbar">
+    <view class="wrapper-toolbar {{light?'bg-light':'bg-primary'}}" wx:if="{{showComponent}}">
+        <view class="statusbar" style="height: {{statusBarHeight}}px"></view>
+        <view class="wrapper" style="height: {{height}}px">
+            <view class="icon-group">
+                <view bindtap="handleNavBack" class="icon-back-wrapper" wx:if="{{showBack}}">
+                    <image class="icon-back" src="../../images/{{light?'yunxin1':'yunxin2'}}.png"></image>
+                </view>
+                <image bindtap="handleNavToHome" class="icon-home" src="../../images/{{light?'selected-home':'home'}}.png" wx:if="{{showHome&&!showBack}}"></image>
+            </view>
+            <text bindtap="handleTitleTap" class="title {{isHomePage?'homePage':''}}">{{title}}</text>
+            <view class="wechat-tool-holder"></view>
+        </view>
+    </view>
+    <view class="content-container {{showComponent?'has-nav-bar':''}}" style="background-color: {{bgColor}}; padding-top: {{showComponent?height+statusBarHeight:0}}px">
+        <view class="container">
+            <slot></slot>
+        </view>
+    </view>
+</view>

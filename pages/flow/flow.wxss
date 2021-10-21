@@ -1,0 +1,30 @@
+/* pages/flow/flow.wxss */
+page{
+  background:#f4f4f4;
+  font-size:12px;
+}
+.flow{
+  display:flex;
+  justify-content: space-around;
+  margin-bottom:15rpx;
+}
+.service-flow{
+  background:#fff;
+  padding-top:30rpx;
+}
+.circle{
+  height:155rpx;
+  width:155rpx;
+  border-radius:100%;
+  text-align:center;
+  line-height:155rpx;
+  color:#fff;
+  background:#f3519e;
+}
+.word{
+  padding:30rpx;
+  color:#999;
+}
+.word view:nth-child(2){
+  margin:10rpx 0;
+}

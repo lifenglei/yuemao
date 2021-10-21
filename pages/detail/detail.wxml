@@ -1,0 +1,246 @@
+<!--pages/detail/detail.wxml-->
+
+<view class="page-wrap">
+    <video id="myAudio" hidden="{{videoStatus}}"
+    src="{{res.profile.video_url}}"
+    style="height:{{scrollHeight}}px;"
+    bindended="endVideo"
+    bindplay="playing"
+    bindpause="pauseing"
+    bindwaiting="waitting">
+    </video> 
+  <view>
+    <swiper 
+      autoplay="{{autoplay}}" 
+      class="banners" 
+      interval="{{interval}}"
+       duration="{{duration}}" 
+       style='height:{{Hei}}' 
+       vertical="true"
+       hidden="{{showSwiper}}"
+       current="{{swiperIndex}}">
+      <block>
+        <swiper-item class="bgcolor">
+          <swiper 
+          indicator-dots="{{indicatorDots}}"
+          indicator-active-color="{{color}}"
+          indicator-color="{{dotsColor}}"
+          autoplay="{{autoplay}}" 
+          class="banners"
+           interval="{{interval}}" 
+           duration="{{duration}}"
+           circular='{{false}}' 
+           style='height:{{Hei}}'>
+          <block wx:for="{{detailList}}"wx:key="*this">
+            <swiper-item class="banner" >
+                <image 
+                src="{{item}}"              
+                class="banner-image" 
+                mode="aspectFill" 
+                style="width:100%; height:{{Hei}}; display:initial"/>
+            </swiper-item>
+          </block>
+        </swiper> 
+      </swiper-item>
+      <view class="button-group {{isIpx?'fix-iphonex-button':''}}">
+             <view class="video icon-video" bindtap='showVideo' hidden="{{res.profile.video_url==''}}">
+         <image 
+         src="http://img2.inke.cn/MTUyMTAyNzgxMDk0OSM3MDQjanBn.jpg" 
+         mode="widthFix"></image>
+      </view>
+      <view class="bottom-info info">
+       <view class="num-info identificate">
+          <view class="add-icon {{hide}}"><image src="{{res.profile.addv_icon}}"></image>认证：{{res.profile.addv_name}}</view>
+          <text class="">粉丝 {{res.fans.fans_number}}</text>
+       </view>
+       <view class="num-info order dot-op">
+        <text>订单数 {{res.busi_data.order_count}}</text>
+        <text>评分 {{res.busi_data.avg_score}}</text>
+       </view>
+      </view>
+      <view class="bottom-info">
+        
+        <text class="up" bindtap='changeSwiper'>上拉查看详情</text>
+        <image 
+        src='http://img2.inke.cn/MTUyMTAyOTE4NTIxMyMzNDgjanBn.jpg' 
+        style="width:32rpx;height:24rpx;margin:0 8px;"></image>
+         <text class="private-message" 
+        bindtap='getWechat'
+        hidden="{{uid==userUid}}">私信</text> 
+        <text class="date-po" 
+        bindtap='showModal'
+        hidden="{{uid==userUid}}">立即下单</text>
+      </view>
+      </view>
+    </block>
+     <block>
+      <swiper-item class="comment-scroll">
+        <view class="detail-wrap">
+             <view class="weui-form-preview">
+            <view class="weui-form-preview__bd">
+                <view class="weui-form-preview__item clearfix h98">
+                    <text class="fl">用户昵称</text>
+                     <text class="fl nick">{{res.profile.nick}}</text>
+                      <text class="fl age {{res.profile.gender==2?'woman':res.profile.gender==3?'hidden':'man'}}">{{res.profile.age}}</text>
+                </view>
+                <view class="weui-form-preview__item clearfix h98">
+                    <text class="fl">所在城市</text>
+                     <text class="fl nick">{{res.location.location}}</text>
+                </view>
+                 <view class="weui-form-preview__item clearfix h98">
+                    <text class="fl">用户印象</text>
+                     <view class="nick" 
+                     style="max-width:520rpx;width:100%;position:relative;left:-30rpx;line-height:2"
+                     >
+                       <scroll-view class="scroll-view_H scroll-header" 
+                       scroll-x 
+                       style="width:100%;text-align:left;">
+                            
+                            <view class="green" 
+                            wx:for="{{res.user_comment_list.label_data}}"
+                            wx:for-item="comment" wx:key="*this">{{comment.label_name}} {{comment.total_count}}</view>
+                      </scroll-view>
+                     </view>
+                </view>
+                <view class="weui-form-preview__item clearfix h98">
+                    <text class="fl">个性签名</text>
+                       <text class="fl nick">{{res.profile.description==''?'该宝宝暂时还没想到个性签名':res.profile.description}}</text>  
+                </view>
+            </view>
+            <view style="width:100%;height:5px;background:#f3f3f3;"></view>
+            <view wx:if="{{commentshow}}">
+        <view class="weui-panel weui-panel_access">
+            <view class="rank-header">
+               <text class="comment">评价 <text class="all-comment">{{res.user_comment_list.comment_number}}</text></text>
+               <navigator class="show-more" hover-class="none" url="../comment/comment?to_uid={{uid}}">查看更多</navigator>
+            </view>
+            
+            <view class="weui-panel__bd">
+              <scroll-view 
+              scroll-y 
+              style="padding-bottom:200rpx;"
+             >
+                     <view 
+                     wx:for="{{res.user_comment_list.data}}"
+                     wx:for-item="commentlist" 
+                     wx:key="*this"
+                     class="weui-media-box weui-media-box_appmsg">
+                    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                        <image 
+                        class="weui-media-box__thumb" 
+                        src="{{commentlist.phone_photo==''?'http://img2.inke.cn/MTUyMzI1MzcwNDAwMCM5NDYjanBn.jpg':commentlist.phone_photo}}" 
+                        style="border-radius:120rpx;"/>
+                    </view>
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                        <view class="weui-media-box__title name">
+                          <text>{{commentlist.nick}}</text>
+                          <view>
+                            <text class="active"
+                             wx:for="{{commentlist.avg_score}}"
+                             wx:key="*this"></text>
+                              <text class="star" 
+                              wx:for="{{5-commentlist.avg_score}}"
+                              wx:key="*this"></text>
+                          </view>
+                        </view>
+                        <view class="weui-media-box__desc des">{{commentlist.comment}}</view>
+                        <view class="nick" 
+                        style="position:relative;left:-30rpx;"
+                        wx:if="{{commentlist.label.length>0}}">
+                            <view class="green h40" 
+                            wx:for="{{commentlist.label}}"
+                            wx:key="*this"
+                            >{{item}}</view>
+                        </view>
+                        <view class="comment-time">{{commentlist.ctime}}</view>
+                    </view>
+                </view>
+              
+              </scroll-view>
+           
+            </view>
+        </view>
+            </view>
+        </view>
+        </view>
+      </swiper-item>
+              <view 
+        class="bottom-infos" 
+        style="background:#fff;bottom:{{isIpx? -(scrollHeight) : -scrollHeight}}px">
+        <!-- <text class="private-message" 
+        bindtap='getWechat'
+        hidden="{{uid==userUid}}">私信</text> -->
+        <text class="date-po" 
+        bindtap='showModal'
+        hidden="{{uid==userUid}}">立即下单</text>
+      </view>
+  
+    </block>
+    
+    
+    </swiper>
+
+  </view>
+  <view>
+  <view 
+  class="commodity_screen" 
+  bindtap="hideModal" 
+  wx:if="{{showModalStatus}}"></view>
+  <view 
+  animation="{{animationData}}" 
+  class="commodity_attr_box {{isIpx?'fix-iphonex-button':''}}" 
+  wx:if="{{showModalStatus}}">
+    <view class="title">
+            <image src="{{res.profile.portrait}}" style=""></image>
+            <text>{{res.profile.nick}}</text>
+            <!-- <image class="cancle" src="https://img2.inke.cn/MTUxMjM3OTczNTI5MyM3I2pwZw==.jpg"></image> -->
+        </view>
+        <text class="chose-num">才艺</text>
+        <view>
+                    <scroll-view 
+          class="scroll-view_H scroll-header" 
+          scroll-x 
+          style="width: 90%;padding:0 30rpx;">
+            <view 
+            class="swiper-slide {{currentTopItem==idx ? 'current' : ''}}" 
+            wx:for="{{res.services}}"
+             wx:for-item="o" 
+             wx:for-index="idx"
+              data-index="{{idx}}"
+              data-obj = "{{o}}"
+               bindtap="switchTab"
+             wx:key="*this"
+             >
+              <image src="{{o.icon}}" style="width:80rpx;height:80rpx;"></image>
+              <view class="project">{{o.skill_name}}</view>
+              <view class="price">{{o.price/100}}元/{{o.price_unit}}</view>
+            </view>
+           </scroll-view>
+        </view>
+        <text class="chose-num">数量</text>
+        <view class="num clearfix">
+            <text class="{{numIndex==numItem ? 'current' : ''}}" 
+            wx:for="{{num}}"
+            wx:for-index="numIndex"
+            data-count="{{item}}"
+            data-index="{{numIndex}}"
+            bindtap="switchNum"
+            wx:key="*this"
+            >{{item}}</text>
+        </view>
+    <view class="weui-cell_input weui-cell_vcode qqwrap">
+                <view class="weui-cell__hd">
+                    <view class="weui-label qq qqinput">QQ号</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input qqinput" placeholder="请输入QQ号码" bindinput ="qqInput" value="{{qq}}"/>
+                </view>
+            </view>
+        <view class="bottom clearfix {{isIpx?'phonex':''}}">
+            <text>{{needMoney}}元<text>合计</text></text>
+            <text bindtap="flow" style="display:inline-block; margin-left:30rpx;color:#07aefc;">服务流程</text>
+            <text href="javascript:;" bindtap='sureOrder'>确认</text>
+        </view>
+    </view>
+  </view>
+</view>

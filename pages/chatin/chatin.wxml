@@ -1,0 +1,164 @@
+<!-- 头部麦序-->
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">
+          <image class="weui-grid__icon more-icon" src="{{boss}}" bindtap="applyChat" data-id="100"/>
+        </view>
+        <image src="http://img2.inke.cn/MTUyNzA2Mjg3OTM2NiM2NDgjanBn.jpg" class="zhuchi-img"></image>
+        <view class="page__desc">{{ownNick}}</view>
+    </view>
+    <view class="page__bd">
+        <view class="weui-grids chatroom-wrap">
+            <block wx:for="{{grids}}" wx:key="*this">
+                <view url="" class="weui-grid chat-man">
+                    <image class="weui-grid__icon more-icon" src="{{item.portrait}}" data-id="{{index+1}}" catchtap='applyChat'/>
+                     <view class="weui-grid__label nick">{{item.nick}}</view> 
+                </view>
+            </block>
+        </view>
+    </view>
+</view>
+<!--欢迎语-->
+<view class="center">
+    <text class="inroom" wx:if="{{welcomeNick}}">
+          <text class="level-{{n}} lem"></text>
+          <text>{{welnick}}</text>
+          <text style="color:orange">{{words}}</text>
+    </text>
+</view>
+<view class="gift-wrap" wx-if="{{gift}}">
+  <image src="{{gift_img}}" class="gift_imgs gift_change"></image>
+</view>
+<!--消息展示-->
+<view class="message">
+  <scroll-view scroll-y style="width:100%;text-align:left; height:300rpx;" scroll-into-view="{{view}}">
+      <view wx:for="{{messageList}}" class="me-wrap" wx:for-index="idx" id="st-{{idx}}">
+      <!--离开房间-->
+           <text wx:if="{{item.msg_type==204}}" class="text-back">
+              <text>
+                <text wx:if="{{item.custom.user.is_admin==2}}" class="fangzhu lem"></text>
+                <text wx:if="{{item.custom.user.is_admin==1}}" class="guanli lem"></text>
+                <text wx:if="{{item.custom.users.is_admin==3}}" class="zhuchi lem"></text>
+              </text>
+              <text class="level-{{item.custom.user.level}} lem"></text>
+              <text style="color:#fff;margin-right:5px">{{item.custom.user.nick}}</text>
+              <text style="color:orange">{{item.text}}</text>
+        </text>
+      <!--上麦下麦消息-->
+        <text wx:if="{{item.msg_type==102}}" class="text-back">
+              <text>
+                <text wx:if="{{item.custom.users.sender.is_admin==2}}" class="fangzhu lem"></text>
+                <text wx:if="{{item.custom.users.sender.is_admin==1}}" class="guanli lem"></text>
+                <text wx:if="{{item.custom.users.sender.is_admin==3}}" class="zhuchi lem"></text>
+              </text>
+              <text class="level-{{item.custom.users.sender.level}} lem"></text>
+              <text style="color:#fff;margin-right:5px">{{item.custom.users.sender.nick}}</text>
+              <text style="color:orange">{{item.text}}</text>
+        </text>
+         <text wx:if="{{item.msg_type==100}}" class="text-back">
+               <text>
+                <text wx:if="{{item.custom.is_admin==2}}" class="fangzhu lem"></text>
+                <text wx:if="{{item.custom.is_admin==1}}" class="guanli lem"></text>
+                <text wx:if="{{item.custom.is_admin==3}}" class="zhuchi lem"></text>
+              </text>
+               <text class="level-{{item.custom.level}} lem"></text>
+              <text style="color:orange;margin-right:5px">{{item.custom.nick}}:</text>
+              <text>{{item.text}}</text>
+         </text>
+        <view wx:if="{{item.msg_type==101}}" class="text-back">
+             <text>
+                <text wx:if="{{item.custom.is_admin==2}}" class="fangzhu lem"></text>
+                <text wx:if="{{item.custom.is_admin==1}}" class="guanli lem"></text>
+                <text wx:if="{{item.custom.is_admin==3}}" class="zhuchi lem"></text>
+              </text>
+              <text class="level-{{item.custom.level}} lem"></text>
+              <text style="color:#fff;margin-right:5px">{{item.custom.nick}}</text>
+              <text style="color:orange;margin-right:5px">打赏</text>
+              <text style="color:#fff">{{item.text.to_user}}</text>
+              <image src="{{item.text.gift_url}}" style="width:24rpx;height:24rpx; margin:0 5px;"></image>
+              <text style="color:orange">*1</text>
+        </view>
+      </view>
+  </scroll-view>
+</view>
+
+<!--发送文字-->
+ <view class='chatinput-wrapper' style='margin-bottom: {{focusFlag ? 0 : 0}}rpx;' catchtap='stopEventPropagation'>
+    <view class='chatinput-content'>
+       <image src='{{sendType == 1 ? "http://img2.inke.cn/MTUyNjYzMjc0OTAwNCMxMTMjanBn.jpg" : "http://img2.inke.cn/MTUyNjYzMjgyNzQxMSM4MDIjanBn.jpg"}}' class='chatinput-img' catchtap='offChat'></image>
+      <image src='{{sendType == 1 ? "http://img2.inke.cn/MTUyNjYzMjg5NTg4MCM3MDUjanBn.jpg" : "../../images/keyboard.png"}}' class='chatinput-img' catchtap='switchSendType'></image>
+       <image src='{{sendType == 1 ? "http://img2.inke.cn/MTUyNjYzMjkyNDk1OSM4MTkjanBn.jpg" : "../../images/keyboard.png"}}' class='chatinput-img' catchtap='switchSendType'></image>
+      <input style='margin-bottom: 20rpx;'class='chatinput-input'  placeholder="想说点什么..." value='{{inputValue}}' max-length="30" bindinput='inputChange' bindfocus='inputFocus' bindblur='inputBlur' bindconfirm='inputSend'focus='{{focusFlag}}' style="color:#fff;font-size:14px;"></input>
+      <image src='http://img2.inke.cn/MTUyNjYzOTMyMDI4NiM2OTEjanBn.jpg' bindtap='showModal' class='chatinput-img fr'></image>
+    </view>
+</view>
+
+<view 
+  class="commodity_screen" 
+  bindtap="hideModal" 
+  wx:if="{{showModalStatus}}"></view>
+  <view 
+  animation="{{animationData}}" 
+  class="commodity_attr_box {{isIpx?'fix-iphonex-button':''}}" 
+  wx:if="{{showModalStatus}}">
+    <view class="gift_list">
+      <swiper 
+      indicator-dots="{{indicatorDots}}"
+      duration="{{duration}}" 
+      style="height:100%;" 
+      indicator-color="#fff">
+        <block>
+          <swiper-item>
+              <view class="gift_list-wrap">
+                  <view class="one {{choseOrder==index ? 'current' : ''}}" 
+                  wx:for="{{firstGiftWall}}" 
+                   bindtap="switchTab"
+                   data-index="{{index}}"
+                   data-id="{{item.id}}">
+                      <view>
+                        <image src="{{item.image}}" class="gift_url"></image>
+                        <view class="gift-gold">{{item.gold/100}}钻</view>
+                        <view>{{item.name}}</view>
+                      </view>
+                  </view>
+              </view>
+          </swiper-item>
+           <swiper-item>
+              <view class="gift_list-wrap">
+                 <view class="gift_list-wrap">
+                  <view class="one {{choseOrder==index ? 'current' : ''}}" 
+                  wx:for="{{sendondGiftWall}}"
+                   bindtap="switchTab"
+                   data-index="{{index}}"
+                   data-id="{{item.id}}">>
+                      <view class="two">
+                        <image src="{{item.image}}" class="gift_url"></image>
+                        <view class="gift-gold">{{item.gold/100}}钻</view>
+                        <view>{{item.name}}</view>
+                      </view>
+                  </view>
+              </view></view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+      <view class="on-chat-man" wx:if="{{modaltype}}">
+         <scroll-view scroll-y style="height: 160rpx;">
+          <view wx:for="{{onChatMan}}" wx:key="*this" wx:if="{{item.portrait!=origin}}" data-toUid="{{item.uid}}" data-nick="{{item.nick}}" bindtap='choseManSend'>
+              <image src="{{item.portrait}}" class="shang-img"></image>
+              <text>{{item.nick}}</text>
+          </view>
+
+      </scroll-view>
+      
+      </view>
+    <view class="send_gift">
+        <text>充值:{{gold}}钻 </text>
+        <text>打赏</text>
+        <view style="display:inline-block;margin-left:10px;" bindtap="switchModal">{{sendTonick}}</view>
+        <image src="{{up?'http://img2.inke.cn/MTUyMTAyOTE4NTIxMyMzNDgjanBn.jpg':'http://img2.inke.cn/MTUyMTAyOTE4NTIxMyMzNDgjanBn.jpg'}}" class="gift_up"></image>
+         <button bindtap='sendGiftTOLike' class="send_gift_to_user">发送</button> 
+    </view>
+  </view>
+
+

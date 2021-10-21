@@ -1,0 +1,37 @@
+/* pages/orderdetail/orderdetail.wxss */
+page{
+  background:#f4f4f4;
+  padding-top:30rpx;
+  font-size:14px;
+}
+.order-title{
+  display:flex;
+  justify-content:space-between;
+}
+.bottom{
+  height:80rpx;
+  line-height:80rpx;
+  font-size:12px;
+  color:#979797;
+  text-align:center;
+}
+.num-color{
+  color:#333;
+}
+.order-money{
+  color:#32AAF0;
+  margin-right:20rpx;
+}
+.iscre{
+  font-size:13px;
+  color:#FE9C49;
+  margin-right:20rpx
+}
+.link{
+    height: 98rpx;
+    padding-right: 15rpx;
+    color: #FF506D;
+    font-style: normal;
+    background: url(https://img2.inke.cn/MTUwMTIzNDc2NTcxOCM0MDMjanBn.jpg) no-repeat right center;
+    background-size: 22rpx auto;
+}

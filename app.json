@@ -1,0 +1,36 @@
+{
+  "pages": [
+    "pages/move/move",
+    "pages/calendar/index",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/home/home",
+    "pages/detail/detail",
+    "pages/charge/charge",
+    "pages/editor/editor",
+    "pages/editor/info",
+    "pages/date/date",
+    "pages/flow/flow",
+    "pages/orderdetail/orderdetail",
+    "pages/help/help",
+    "pages/appeal/appeal",
+    "pages/comment/comment",
+    "pages/webview/webview",
+    "pages/chating/chating",
+    "pages/recentchat/recentchat",
+    "pages/chatroom/chatroom",
+    "pages/agindex/agindex",
+    "pages/meeting/meeting"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f3519e",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "white"
+  },
+  "networkTimeout": {
+    "request": 10000
+  },
+  "debug": true,
+  "sitemapLocation": "sitemap.json"
+}

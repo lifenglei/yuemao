@@ -1,0 +1,43 @@
+<!--index.wxml-->
+<import src="../../template/template.wxml"/>
+<template is="tabBar" data="{{tabBar:bindData.tabBar,unread:unread}}"/>
+<view class="wrap">
+  <!-- <web-view src="http://wpa.qq.com/msgrd?v=3&uin=123456789&site=qq&menu=yes">我的</web-view> -->
+  <scroll-view  scroll-top="{{scrollTop}}" scroll-y="true"style="height:{{scrollHeight}};">
+      <swiper indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" class="banners" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{banner}}"wx:key="*this">
+      <swiper-item class="banner" >
+          <navigator class="banner-nav" url="../webview/webview?link={{item.link}}">
+            <image 
+            src="{{item.image}}" 
+            class="banner-image" 
+            width="100%" 
+            height="100%"
+            />
+          </navigator>
+      </swiper-item>
+    </block>
+  </swiper>
+  <!--九宫格展示数据-->
+  <view class="page">
+    <view class="page__bd">
+        <view class="list-wrap">
+            <block wx:for="{{girlList}}" wx:for-item="itemName" wx:key="*this">
+                <navigator url="../detail/detail?uid={{itemName.uid}}" class="link-home" hover-class="none">
+                    <image src="{{itemName.portrait}}"mode="widthFix"  lazy-load="true" />
+                    <view class="mao-info">
+                      <view class="clearfix info-wrap">
+                        <text class="nick fl mr74 w200">{{itemName.nick}}</text>
+                        <text class="age fl {{itemName.gender==2?'woman':itemName.gender==3?'hidden':'man'}}"><text class="girl-age">{{itemName.age}}</text></text>
+                        <text class="meet fr mr74">约她</text>
+                      </view>
+                    </view>
+                    
+                </navigator>
+            </block>
+        </view>
+    </view>
+</view>
+  </scroll-view>
+</view>

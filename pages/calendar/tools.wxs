@@ -1,0 +1,58 @@
+var enableClass = function (day, today, isLateMightModel, dayIndex, daysCount) {
+  var _day = getDate(day)
+  var _today = getDate(today)
+  var _condition0 = +_day >= +_today
+  var _condition1 = isLateMightModel
+  var _condition2 = !daysCount ? true : dayIndex <= daysCount
+  return _condition0 && _condition2 ? 'enable' : _condition1 ? 'enable sunday' : 'disabled'
+}
+
+var workClass = function (date, holidaytag) {
+  var _day = getDate(date).getDay()
+  var _tag = holidaytag[date]
+  var _map = {
+    '班': 'work',
+    '休': 'restTag'
+  }
+
+  if (_day === 0 || _day === 6 || _tag) {
+    return _map[_tag] || 'sunday'
+  }
+}
+
+var festivalClass = function (date, festivaltag, cnfestivaltag) {
+  var _md = [date.split('/')[1], date.split('/')[2]].join('/')
+  return festivaltag[_md] || cnfestivaltag[date] ? 'sunday' : ''
+}
+
+var todayClass = function (day, today) {
+  return +getDate(day) === +getDate(today) ? 'today' : ''
+}
+
+var startAndEndClass = function (day, start, end) {
+  var _date = +getDate(day)
+  var _start = +getDate(start)
+  var _end = +getDate(end)
+  var _startClass = _date === _start ? 'start' : ''
+  var _rangeClass = _date > _start && _date < _end ? 'range' : ''
+  var _endClass = _start && _date === _end ? 'end' : ''
+  return _startClass || _rangeClass || _endClass
+}
+
+var getItemClasses = function (day, today, start, end, holidaytag, festivaltag, cnfestivaltag, isLateMightModel, dayIndex, daysCount) {
+  return [enableClass(day, today, isLateMightModel, dayIndex, daysCount), workClass(day, holidaytag), festivalClass(day, festivaltag, cnfestivaltag), todayClass(day, today), startAndEndClass(day, start, end)].join(' ')
+}
+
+var formatMonth = function (month) {
+  return month.split('/')[0] + '年' + month.split('/')[1] + '月'
+}
+
+var inoutDay = function (day, start, end) {
+  return +getDate(start) === +getDate(day) ? '入住' : +getDate(end) === +getDate(day) ? '离店' : ''
+}
+
+module.exports = {
+  getItemClasses: getItemClasses,
+  formatMonth: formatMonth,
+  inoutDay: inoutDay
+}

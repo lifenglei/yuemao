@@ -1,0 +1,168 @@
+/**index.wxss**/
+.banners {
+  width: 100%;
+  height: 248rpx;
+  margin-bottom:14rpx;
+}
+.banners .wx-swiper-dot{
+  position:relative;
+  left:-440%;
+}
+.w200{
+  max-width:200rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.wrap{
+  font-size:12px;
+}
+.nick{
+  font-size:21px;
+}
+.banner{
+  position: relative;
+}
+.banner-nav{
+  display:block;
+  width:100%;
+  height:100%;
+}
+.banner-image{
+  width: 100%;
+  height: 100%;
+}
+
+.banner-title{
+  color: #FFF;
+  position: absolute;
+  width: 100%;
+  padding-left: 16px;
+  padding-right: 16px; 
+  bottom: 30px;
+  font-size: 16px;
+   left: 0;
+}
+
+.sub-title{
+  color: #76787e;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 16px;
+  width: 100%;
+  font-size: 14px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.news-item-container {
+  background-color: #f2f2f2;
+  width: 100%;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.news-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 8px;
+  padding-top: 8px;
+  padding-right: 8px;
+  padding-bottom: 8px;
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-top: 8px;
+  background-color: #fff;
+  border: 1px solid #eaeaea;
+  border-bottom: 1px solid #d0d0d0;
+  border-radius: 5px;
+}
+
+.news-item-right{
+  width: 80px;
+  height: 80px;
+}
+
+.news-image{
+  width: 80px;
+  height: 80px;
+}
+
+.news-item-title{
+  font-size: 16px;
+}
+
+.load-btn{
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  display: block;
+  line-height: 2.3;
+  font-size: 13px;
+  padding: 0 1.34em;
+}
+.weui-grids image{
+  width:100%;
+  height:400rpx;
+}
+.list-wrap{
+  width:100%;
+}
+.link-home{
+  margin-bottom:14rpx;
+}
+.link-home image{
+  width:100%;
+}
+.meet{
+  width:168rpx;
+  height:48rpx;
+  text-align:center;
+  border-radius:30rpx;
+  line-height:48rpx;
+  margin-right:32rpx;
+  background:#FA8746;
+}
+.info-wrap{
+  padding-left:32rpx;
+  height:100rpx;
+}
+.price{
+  margin-right:40rpx;
+}
+.info-wrap text:nth-child(1){
+  margin-right:16rpx;
+}
+.mao-info{
+  background: url(http://img2.inke.cn/MTUyMTc4Mjc0MzI3NyM5NzQjanBn.jpg) no-repeat;
+  position:relative;
+  margin-top:-110rpx; 
+  color:#fff;
+  background-size:100% 100%;
+}
+.mr74{
+  margin-top:28rpx;
+  font-size:16px;
+}
+.age{
+  display: inline-block;
+  width: 76rpx;
+  margin: 37rpx 0 0 15rpx;
+  color: #fff;
+  font-weight: normal;
+  border-radius: 4rpx;
+  text-align:center;
+  text-indent:35rpx;
+}
+.woman{
+    background: url(https://img2.inke.cn/MTUxMDI5ODkxNDgwNyM2NjYjanBn.jpg) no-repeat 4px center;
+    background-color: #F7529E;
+    background-size: 10px;
+}
+.man {
+    background: url(http://img2.inke.cn/MTUxNjkzNDk4MTU0MCMyODUjanBn.jpg) no-repeat 4px center;
+    background-color: #07aefc;
+    background-size: 10px;
+}

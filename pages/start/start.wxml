@@ -1,0 +1,8 @@
+<view class="start">
+   <image src="http://img2.inke.cn/MTUyNTk0ODYyMjYwNiM2MTAjanBn.jpg" mode="widthFix"></image> 
+    <view>需要使用你的微信昵称和头像</view>
+</view>
+
+
+ <button class="logIn" open-type='getUserInfo' bindgetuserinfo="logIn">点击授权</button> 
+<!-- <button class="logIn" open-type='getUserInfo'>111</button> -->

@@ -1,0 +1,102 @@
+
+/* 个人中心样式 */
+page{
+  background:#f4f4f4;
+}
+.home-wrap{
+  margin:auto;
+  font-size:12px;
+}
+.home-info{
+  width:100%;
+  height:192rpx;
+  background:#fff;
+}
+.mr30{
+  margin-top:30rpx;
+}
+.home-li{
+  width:100%;
+  color:#979797;
+}
+.home-li .line:nth-child(2){
+  border-top:1px solid #f4f4f4;
+}
+.bor{
+  border-bottom:1px solid #f4f4f4;
+}
+.home-help{
+  width:100%;
+  background:#fff;
+  margin-top:30rpx;
+
+}
+.message{
+  padding:30rpx;
+  font-size:13px;
+}
+.nick{
+  margin-right:15rpx;
+}
+.photo{
+  height:98rpx;
+}
+.photo image{
+  width:32px;
+  height:32px;
+  border-radius:100%;
+  margin-top:20rpx;
+}
+.woman{
+    background: url(https://img2.inke.cn/MTUxMDI5ODkxNDgwNyM2NjYjanBn.jpg) no-repeat 4px center;
+    background-color: #F7529E;
+    background-size: 10px;
+}
+.man {
+    background: url(http://img2.inke.cn/MTUxNjkzNDk4MTU0MCMyODUjanBn.jpg) no-repeat 4px center;
+    background-color: #07aefc;
+    background-size: 10px;
+}
+.age{
+  display:inline-block;
+  width:76rpx;
+  margin:0 0 0 20rpx;
+  color:#fff;
+  font-weight:normal;
+  border-radius:4rpx;
+  text-align:center;
+  text-indent:20rpx;
+  line-height:32rpx;
+  font-size:12px;
+}
+.line{
+  display:flex;
+  justify-content: space-between;
+  padding-right:30rpx;
+  padding-left:30rpx;
+  align-items:center;
+  background:#fff; 
+  color:#979797;
+  height:98rpx;
+}
+.help-icon{
+  width:48rpx;
+  height:48rpx;
+  vertical-align: middle;
+  position:relative;
+  top:-4rpx;
+  margin-right:10rpx;
+
+}
+.link{
+    height: 98rpx;
+    padding-right: 15rpx;
+    color: #FF506D;
+    font-style: normal;
+    background: url(https://img2.inke.cn/MTUwMTIzNDc2NTcxOCM0MDMjanBn.jpg) no-repeat right center;
+    background-size: 22rpx auto;
+}
+
+.co{
+  color:#333;
+}

@@ -1,0 +1,48 @@
+
+ 
+ 
+ <view class="order-info-wrap">
+    <scroll-view 
+    scroll-y 
+    style="height:{{scrollHeight}}px;" 
+    bindscrolltoupper="upper" 
+    bindscrolltolower="lower" 
+    bindscroll="scroll">
+       <view class="weui-panel weui-panel_access order-info" 
+       wx:for="{{order_list}}" 
+       wx:for-item="orderItem" 
+       wx:key="*this">
+            <view class="weui-panel__hd order-title">
+              <text class="num-color">订单号：{{orderItem.order_no}}</text>
+              <text>{{orderItem.create_time}}</text>
+            </view>
+            <view class="weui-panel__bd">
+                <navigator 
+                url="../date/date?order_id={{orderItem.order_id}}&user_type={{status}}&uid={{status==1?orderItem.to_uid:orderItem.uid}}" 
+                class="weui-media-box weui-media-box_appmsg" 
+                hover-class="weui-cell_active"
+                >
+                    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                        <image class="weui-media-box__thumb" 
+                        src="{{orderItem.user_info.portrait}}" 
+                        style="border-radius:100%;width:100rpx;height:100rpx;" />
+                    </view>
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                    
+                        <view class="weui-media-box__title order-title">
+                          <text style="font-size:14px;">{{orderItem.user_info.nick}}</text>
+                          <text class="iscre">{{orderItem.order_status_desc}}</text>
+                        </view>
+                        <view class="weui-media-box__desc order-title">
+                          <text style="font-size:12px;">{{orderItem.skill_name}}*{{orderItem.num}}</text>
+                          <text class="order-money">{{orderItem.price/100}}钻</text>
+                        </view>
+                    </view>
+                    <text class="link"></text>
+                </navigator>
+            </view>
+        </view>
+        <view wx:if="{{show}}" class="bottom">我是有底线的哦</view>
+    </scroll-view>
+       
+ </view>

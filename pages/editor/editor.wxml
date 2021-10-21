@@ -1,0 +1,42 @@
+<view class="home-wrap">
+        <view class="line bor">
+        <view>
+          <text class="co">头像</text>
+        </view>
+        <view class="photo" bindtap='changeAvatar'>
+          <image src="{{avatar}}"></image>
+        </view>
+      </view>  
+   <view class="home-li">
+      <view class="line" bindtap='changeNick'>
+        <view>
+          <text class="co">昵称</text>
+        </view>
+        <view>
+        <text class="nick">{{nick}}</text>
+        <text class="link"></text>
+        </view>
+      </view>     
+      <view class="line" bindtap='changeQq'>
+        <view>
+          <text class="co">QQ号</text>
+        </view>
+        <view>
+         <text class="nick">{{qq}}</text>
+         <text class="link"></text>
+        </view>
+      </view>
+    </view>
+    <!-- <view class="home-help">
+      <view class="">
+        <view class="message">
+          <text class="co">提示</text>
+          <view style="padding-top:10rpx;color:#999;">
+            更善完资料，请在应用商店搜索下载月猫APP,享受更完善的服务体验
+          </view>
+        </view>
+      </view>
+      
+    </view> -->
+            
+</view>

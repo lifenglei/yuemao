@@ -1,0 +1,58 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.9.91",
+	"appid": "wx38e0184c6746d2fe",
+	"projectname": "yupaopao",
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 2,
+			"list": [
+				{
+					"id": 0,
+					"name": "调试模式",
+					"pathName": "pages/chatin/chatin",
+					"query": ""
+				},
+				{
+					"id": 1,
+					"name": "个人主页",
+					"pathName": "pages/home/home",
+					"query": ""
+				},
+				{
+					"id": 2,
+					"name": "detail",
+					"pathName": "pages/detail/detail",
+					"query": "uid=207370"
+				}
+			]
+		}
+	}
+}

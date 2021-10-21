@@ -1,0 +1,52 @@
+<wxs src="./tools.wxs" module="tools"></wxs>
+<view class="cal t24 bg1 ">
+  <view class="cal-mask {{ !showMask && 'dn' }}"></view>
+  <view class="bag1 tc bt2 bb2 ">{{ zh.title[0] }}</view>
+  <view class="wk tc t24 bg3 df">
+    <view class="c2">日</view>
+    <view>一</view>
+    <view>二</view>
+    <view>三</view>
+    <view>四</view>
+    <view>五</view>
+    <view class="c2">六</view>
+  </view>
+  <scroll-view
+    class="plc"
+    scroll-y="true"
+    enable-back-to-top="true"
+    style="height:{{scrollViewHeight}}px"
+    scroll-into-view="{{toView}}"
+  >
+    <view
+      class="bb2 oh pb16"
+      wx:for="{{ keys }}"
+      wx:for-item="month"
+      wx:for-index="mIdx"
+      wx:key="month"
+      id="{{ 'm_' + keysStr[mIdx] }}"
+    >
+      <view class="mth t24 c4 tc">{{ tools.formatMonth(month) }}</view>
+      <view class="cic df">
+        <view
+          class="ej pr tc"
+          wx:for="{{ dates[keys[mIdx]] }}"
+          wx:for-item="date"
+          wx:for-index="dIdx"
+          wx:key="date.day"
+          data-date="{{ date }}"
+          bindtap="select"
+        >
+          <view class="day {{ tools.getItemClasses(date.day, today, start, end, holidaytag, festivaltag, cnfestivaltag, date.isLateMightModel, date.dayIndex, daysCount) }}">
+            <view wx:if="{{ date.festival }}" class="tex">{{ date.festival }}</view>
+            <view wx:elif="{{ date.isLateMightModel }}" class="tex">深夜</view>
+            <view wx:elif="{{ date.value }}" class="datetip">{{ date.value }}</view>
+            <view wx:if="{{ date.isToday && !tools.inoutDay(date.day, start, end) }}" class="todaytip tex">今天</view>
+          </view>
+          <view wx:if="{{ tools.inoutDay(date.day, start, end) }}" class="{{ tools.inoutDay(date.day, start, end) ? 'info lh1' : '' }}">{{ tools.inoutDay(date.day, start, end) }}</view>
+          <view wx:if="{{ date.holiday && !date.isLateMightModel }}" class="{{ date.holiday == '休' ? 'pa t22 lh1 rest' : 'pa t22 lh1 work1' }} {{ tools.getItemClasses(date.day, today, start, end, holidaytag, festivaltag, cnfestivaltag, date.isLateMightModel, date.dayIndex, daysCount) }}">{{ date.holiday }}</view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

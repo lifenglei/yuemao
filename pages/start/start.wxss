@@ -1,0 +1,34 @@
+/* pages/start/start.wxss */
+.start{
+  height:200rpx;
+  position:absolute;
+  top:-300rpx;
+  bottom:0;
+  right:0;
+  left:0;
+  margin:auto;
+  text-align:center;
+  font-size:12px;
+}
+image{
+  width:200rpx;
+  height:200rpx;
+  display:inline-block;
+  margin-bottom:30rpx;
+
+}
+.logIn{
+  width:80%;
+  height:80rpx;
+  text-align:center;
+  line-height:80rpx;
+  border-radius:50px;
+  color:#fff;
+  background:#f3519e;
+  position:absolute;
+  top:400rpx;
+  bottom:0;
+  right:0;
+  left:0;
+  margin:auto;
+}

@@ -1,0 +1,13 @@
+         <view class="service-flow">
+            <view style="padding-left:30rpx;margin-bottom:15rpx;">说明</view>
+            <view class="flow">
+              <view class="circle">支付成功</view>
+              <view class="circle">添加QQ好友</view>
+              <view class="circle">完成服务</view>
+            </view>
+            <view class="word">
+              <view>1.成功支付后，主播接受订单后，会主动加您QQ好友，并完成服务，若主播30分钟内未接单，所有消费将全额返还！。</view>
+              <view>2.加好友后，主播未按照要求完成服务，可进行投诉，确认后，全额退款</view>
+              <view>3.服务类型有：语音聊天、视频聊天等,根据下单时长完成服务</view>
+            </view>
+         </view>

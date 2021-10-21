@@ -1,0 +1,93 @@
+<view class="home-wrap">
+  <view class="home-info"bindtap="goEditor" >
+     <view class="weui-panel__bd">
+                <view 
+                  class="weui-media-box weui-media-box_appmsg" >
+                    <view 
+                      class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                        <image class="weui-media-box__thumb" 
+                        src="{{result.user_info.portrait}}" 
+                        style="border-radius:100rpx;"/>
+                    </view>
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                        <view class="weui-media-box__title" class="title-wrap">
+                          <text>{{result.user_info.nick}} </text>
+                          <text
+                          class="{{result.user_info.gender==2?'woman':result.user_info.gender==3?'hidden':'man'}} age">{{result.user_info.age}}                             </text>
+                        </view>
+                        <view>
+                          <view 
+                          class="weui-media-box__desc"
+                          style="margin-top:34rpx;"
+                          wx:if="{{result.user_info.qq!=''}}"
+>QQ: {{result.user_info.qq}}</view>
+                          <view class="copy-qq" bindtap='copyQq' hidden="{{result.user_info.qq==''}}">复制</view>
+                         
+                        </view>
+                        
+                    </view>
+                </view>
+            </view>
+  </view>
+   <view class="home-li mr30">
+      <view class="line">
+        <view>
+          <text>合计：</text>
+        </view>
+          <view>{{result.amount/100}}钻</view>
+      </view>
+        <view class="line">
+        <view>
+          <text>类别</text>
+        </view>
+          <view>{{result.skill_name}}</view>
+      </view>
+        <view class="line">
+        <view>
+          <text>数量</text>
+        </view>
+          <view>{{result.num}}</view>
+      </view>
+      <view class="line">
+        <view>
+          <text>时长</text>
+        </view>
+          <view>{{result.num*result.service_seconds/60}}分</view>
+      </view>     
+      <view class="line">
+        <view>
+          <text>约会</text>
+        </view>
+        <view>{{result.create_time}}</view>
+      </view>
+    </view>
+    <view class="home-help">
+      <view class="line">
+        <view>
+          <text>订单状态</text>
+        </view>
+        <view style="color:#38AEF3;">{{result
+.order_status_desc}}</view>
+      </view>
+      
+    </view>
+     <view>
+        <view class="handle" hidden="{{result.order_status_desc=='服务完成'||user_type==1}}">
+          <navigator url="../appeal/appeal?order_id={{result.order_id}}" class="handle-btn appeal" hidden="{{code!=2021}}">申诉</navigator>
+          <text class="handle-btn done" bindtap='orderDone' hidden="{{code!=2021}}">完成订单</text>
+        </view>
+         <view class="service-flow">
+            <view style="padding-left:30rpx;margin-bottom:15rpx;">说明</view>
+            <view class="flow">
+              <view class="circle">支付成功</view>
+              <view class="circle">添加QQ好友</view>
+              <view class="circle">完成服务</view>
+            </view>
+            <view class="word">
+              <view>1.成功支付后，主播接受订单后，会主动加您QQ好友，并完成服务，若主播30分钟内未接单，所有消费将全额返还！。</view>
+              <view>2.加好友后，主播未按照要求完成服务，可进行投诉，确认后，全额退款</view>
+              <view>3.服务类型有：语音聊天、视频聊天等，根据下单时长完成服务</view>
+            </view>
+         </view>
+     </view>       
+</view>
